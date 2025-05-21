@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calorie Mahjong Calculator</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    td, th {
+      border: 1px solid #999;
+      /* padding: 8px; */
+      height: 30px;
+      text-align: center;
+    }
+    input[type="number"] {
+        width: 98%;
+        height: 100%;
+        border: 0;
+        text-align: center;
+    }
+    .readonly {
+      background-color: #eee;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align: center;">Calorie Mahjong Calculator</h2>
+  <div style="display: flex;justify-content: center;gap: 20px;">
+    <label><input type="checkbox" id="useRandom" onchange="saveToCookies()"> 是否开启随机数</label>
+    <button onclick="calculate()">计算</button>
+    <button onclick="addRow()">添加数据行</button>
+    <button onclick="clearAll()">清空</button>
+  </div>
+  
+
+  <table id="dataTable">
+    <thead>
+      <tr id="headerRow">
+        <th>项目</th>
+        <td ondblclick="editName(this, 0)">人名1</td>
+        <td ondblclick="editName(this, 1)">人名2</td>
+        <td ondblclick="editName(this, 2)">人名3</td>
+        <td ondblclick="editName(this, 3)">人名4</td>
+      </tr>
+    </thead>
+    <tbody id="inputRows">
+      <tr>
+        <th>第1局</th>
+        <td><input type="number" min="0" oninput="saveToCookies()"></td>
+        <td><input type="number" min="0" oninput="saveToCookies()"></td>
+        <td><input type="number" min="0" oninput="saveToCookies()"></td>
+        <td><input type="number" min="0" oninput="saveToCookies()"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr id="randomRow">
+        <th>随机数</th>
+        <td class="readonly"></td>
+        <td class="readonly"></td>
+        <td class="readonly"></td>
+        <td class="readonly"></td>
+      </tr>
+      <tr id="sumRow">
+        <th>总和</th>
+        <td class="readonly"></td>
+        <td class="readonly"></td>
+        <td class="readonly"></td>
+        <td class="readonly"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    let randomGenerated = false;
+    let randomValues = [];
+
+    // === 可编辑人名 ===
+    function editName(cell, index) {
+      const currentName = cell.innerText;
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = currentName;
+      input.onblur = function () {
+        cell.innerText = this.value || currentName;
+        cell.ondblclick = () => editName(cell, index);
+        saveToCookies();
+      };
+      cell.innerText = "";
+      cell.appendChild(input);
+      input.focus();
+    }
+
+    // === 添加数据行 ===
+    function addRow() {
+      const inputRows = document.getElementById("inputRows");
+      const rowCount = inputRows.rows.length + 1;
+      const newRow = document.createElement("tr");
+
+      const headerCell = document.createElement("th");
+      headerCell.textContent = `第${rowCount}局` ;
+      newRow.appendChild(headerCell);
+
+      for (let i = 0; i < 4; i++) {
+        const cell = document.createElement("td");
+        const input = document.createElement("input");
+        input.type = "number";
+        input.min = 0;
+        input.oninput = saveToCookies;
+        cell.appendChild(input);
+        newRow.appendChild(cell);
+      }
+
+      inputRows.appendChild(newRow);
+      saveToCookies();
+    }
+
+    // === 计算逻辑 ===
+    function calculate() {
+      const useRandom = document.getElementById("useRandom").checked;
+      const inputRows = document.getElementById("inputRows").rows;
+      const sumRow = document.getElementById("sumRow").cells;
+      const randomRow = document.getElementById("randomRow").cells;
+
+      if (!randomGenerated) {
+        randomValues = [];
+        for (let i = 1; i <= 4; i++) {
+          const rand = Math.floor(Math.random() * 11);
+          randomValues.push(rand);
+          randomRow[i].textContent = rand;
+        }
+        randomGenerated = true;
+        saveToCookies();
+      }
+
+      for (let col = 1; col <= 4; col++) {
+        let sum = 0;
+        for (let row = 0; row < inputRows.length; row++) {
+          const input = inputRows[row].cells[col].querySelector("input");
+          const value = parseFloat(input.value);
+          if (!isNaN(value)) sum += value;
+        }
+        if (useRandom) {
+          sum *= randomValues[col - 1];
+        }
+        sumRow[col].textContent = sum.toFixed(2);
+      }
+    }
+
+    // === 保存到 cookie ===
+    function saveToCookies() {
+      const data = {
+        names: [],
+        inputs: [],
+        randomValues: randomValues,
+        useRandom: document.getElementById("useRandom").checked
+      };
+
+      // 保存人名
+      const headerCells = document.querySelectorAll("#headerRow td");
+      headerCells.forEach(cell => data.names.push(cell.innerText));
+
+      // 保存输入数据
+      const inputRows = document.getElementById("inputRows").rows;
+      for (let i = 0; i < inputRows.length; i++) {
+        const row = inputRows[i];
+        const rowData = [];
+        for (let j = 1; j <= 4; j++) {
+          const input = row.cells[j].querySelector("input");
+          rowData.push(input.value);
+        }
+        data.inputs.push(rowData);
+      }
+
+      document.cookie = "tableData=" + encodeURIComponent(JSON.stringify(data)) + ";path=/;max-age=31536000";
+    }
+
+    // === 加载 cookie ===
+    function loadFromCookies() {
+      const cookie = document.cookie.split("; ").find(row => row.startsWith("tableData="));
+      if (!cookie) return;
+
+      try {
+        const data = JSON.parse(decodeURIComponent(cookie.split("=")[1]));
+
+        // 设置人名
+        const headerCells = document.querySelectorAll("#headerRow td");
+        data.names.forEach((name, i) => {
+          if (headerCells[i]) headerCells[i].innerText = name;
+        });
+
+        // 添加行并填入数据
+        const tbody = document.getElementById("inputRows");
+        while (tbody.rows.length < data.inputs.length) {
+          addRow();
+        }
+
+        for (let i = 0; i < data.inputs.length; i++) {
+          for (let j = 0; j < 4; j++) {
+            const cell = tbody.rows[i].cells[j + 1];
+            const input = cell.querySelector("input");
+            input.value = data.inputs[i][j];
+          }
+        }
+
+        // 恢复随机数
+        if (data.randomValues && data.randomValues.length === 4) {
+          randomValues = data.randomValues;
+          randomGenerated = true;
+          const randomRow = document.getElementById("randomRow").cells;
+          for (let i = 1; i <= 4; i++) {
+            randomRow[i].textContent = randomValues[i - 1];
+          }
+        }
+
+        // 恢复随机数选项
+        document.getElementById("useRandom").checked = data.useRandom;
+      } catch (e) {
+        console.error("解析 cookie 数据失败：", e);
+      }
+    }
+
+    // === 清空数据 ===
+    function clearAll() {
+      document.cookie = "tableData=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      location.reload();
+    }
+
+    window.onload = loadFromCookies;
+  </script>
+
+</body>
+</html>
