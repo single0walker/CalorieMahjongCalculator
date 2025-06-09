@@ -26,7 +26,7 @@
   - 赦免：0.04%
 
 ## 📦 使用方法
-1. 打开 index.html 文件（可直接双击或直接访问https://single0walker.github.io/CalorieMahjongCalculator/）
+1. 打开 index.html 文件（可直接双击或直接访问 https://single0walker.github.io/CalorieMahjongCalculator/  ）
 2. 输入每局每位玩家的数据
 3. 点击「计算」按钮，查看带有随机因子的得分结果
 4. 可通过「添加数据行」继续记录更多局
@@ -71,7 +71,7 @@
   - Immunity: 0.04%
 
 ## 📦 How to Use
-1. Open the index.html file (double-click directly or visit the website at https://single0walker.github.io/CalorieMahjongCalculator/)
+1. Open the index.html file (double-click directly or visit the website at https://single0walker.github.io/CalorieMahjongCalculator/  )
 2. Enter data for each player per round
 3. Click the "Calculate" button to view results with random factors
 4. Use the "Add Data Row" button to record more rounds
