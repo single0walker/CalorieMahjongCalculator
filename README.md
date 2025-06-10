@@ -34,6 +34,9 @@
 
 ## 📝 更新日志
 ### 2025/06/09
+- 对cookie中的name做处理
+
+### 2025/06/09
 - 添加随机加数机制：即使全胜也可能被惩罚
 - 祝你好运 😛
 
@@ -78,6 +81,9 @@
 5. Use the "Clear" button to remove all records and cached data
 
 ## 📝 Changelog
+### 2025/06/09
+- Apply the same restriction to the name in the cookie
+
 ### 2025/06/09
 - Added random adder mechanism: even a full win might come with penalties
 - Good luck 😛
