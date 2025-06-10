@@ -120,6 +120,12 @@
     <h3>Update Log</h3>
     <ul>
       <li>
+        <h5>06/10/2025</h5>
+        <ul class="ul">
+          <li>Apply the same restriction to the name in the cookie</li>
+        </ul>
+      </li>
+      <li>
         <h5>06/09/2025</h5>
         <ul class="ul">
           <li>Add random increment, there will be a penalty even with a full win</li>
@@ -310,7 +316,7 @@
           // 设置人名
           const headerCells = document.querySelectorAll("#headerRow td");
           data.names.forEach((name, i) => {
-            if (headerCells[i]) headerCells[i].innerText = name;
+            if (headerCells[i]) headerCells[i].innerText = handleTextLength(name,6);
           });
 
           // 添加行并填入数据
