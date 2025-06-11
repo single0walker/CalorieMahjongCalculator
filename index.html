@@ -7,6 +7,7 @@
   <style>
     body{
       width: 100%;
+      /* height: 100vh; */
       margin: 0px;
       padding: 0;
     }
@@ -54,6 +55,8 @@
     #emoji-container {
       position: absolute;
       pointer-events: none;
+      width: 100vw;
+      height: 100vh;
     }
 
     .emoji {
@@ -77,8 +80,8 @@
 </head>
 
 <body  >
-  <div id="emoji-container"></div>
-  <h2 style="text-align: center;">Calorie Mahjong Calculator</h2>
+  <!-- <div id="emoji-container"></div> -->
+  <h2 style="text-align: center;margin-top: 0;">Calorie Mahjong Calculator</h2>
   <div style="display: flex;justify-content: center;gap: 20px;">
     <label><input type="checkbox" id="useRandom" onchange="saveToCookies()"> 是否开启随机数</label>
     <label><input type="checkbox" id="useRandom2" onchange="saveToCookies()"> 是否开启随机加数</label>
@@ -405,9 +408,7 @@
     window.onload = loadFromCookies;
     const emojiContainer = document.getElementById('emoji-container');
     const emojis = ['😊', '😂', '😍', '🥺', '😎', '🤔', '😜', '🙃', '😇'];
-
     document.body.addEventListener('click', (e) => {
-      console.log("clicked");
       // 获取点击位置
       const x = e.clientX;
       const y = e.clientY-25;
@@ -419,21 +420,21 @@
       const emoji = document.createElement('div');
       emoji.classList.add('emoji');
       emoji.textContent = randomEmoji;
-
+      
       // 随机生成目标位置（飞出的方向）
-      const randomX = Math.random() * 50 - 25;  // 随机水平偏移
-      const randomY = Math.random() * 50 - 25;  // 随机垂直偏移
+      const randomX = Math.random() * 100-50 ;  // 随机水平偏移
+      const randomY = -Math.random() * 100 ;  // 随机垂直偏移
 
       // 设置动画的目标位置
       emoji.style.setProperty('--x', `${randomX}px`);
       emoji.style.setProperty('--y', `${randomY}px`);
-
+      emoji.style.userSelect = 'none';
       // 设置 emoji 初始位置
       emoji.style.left = `${x - 12}px`;  // 减去 emoji 宽度的一半
       emoji.style.top = `${y - 12}px`;   // 减去 emoji 高度的一半
 
       // 添加到容器中
-      emojiContainer.appendChild(emoji);
+      document.body.appendChild(emoji);
 
       // 动画结束后移除元素
       emoji.addEventListener('animationend', () => {
