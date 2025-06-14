@@ -4,98 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Calorie Mahjong Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
-    html{
-      font-size: calc((100 / 1920)*100vw*0.16);
-    }
-    h1{
-      margin-bottom: 2rem ;
-    }
-    body{
-      width: 100%;
-      /* height: 100vh; */
-      margin: 0px;
-      padding: 0;
-      padding-top: 2rem;
-      background-color: #000;
-      color: rgb(0, 255, 0);
-    }
-    ul,
-    h4,
-    h5 {
-      margin: 0;
-    }
-
-    h3 {
-      margin-top: 1.8rem;
-      margin-bottom: 0px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 1rem;
-      margin-top: 1.8rem;
-    }
-
-    td,
-    th {
-      border: 1px solid rgb(0, 255, 0);
-      background-color: #000;
-      color: rgb(0, 255, 0);
-      /* padding: 8px; */
-      height: 3rem;
-      text-align: center;
-      font-size: 2.4rem;
-    }
-
-    input[type="number"] {
-      width: 25rem;
-      height: 100%;
-      border: 0;
-      text-align: center;
-      background-color: transparent;
-      color: rgb(0, 255, 0);
-      border: 0;
-      outline: none;
-      font-size: 2.4rem;
-    }
-
-    .ul>li {
-      font-size: 0.8rem;
-      color: #999;
-    }
-
-    .readonly {
-      background-color: rgb(0, 255, 0);
-      color: #000;
-      border: #000 1px solid;
-    }
-    #emoji-container {
-      position: absolute;
-      pointer-events: none;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .emoji {
-      position: absolute;
-      font-size: 4rem;
-      animation: fly 2s forwards;
-    }
-    .label{
-      font-size: 1.6rem;
-      vertical-align: middle;
-    }
-    button{
-      background-color: #000;
-      border: 1px solid rgb(0, 255, 0);
-      width: 10rem;
-      height: 2.5rem;
-      color: rgb(0, 255, 0);
-      border-radius: 1rem;
-      font-size: 1.6rem;
-    }
     @keyframes fly {
       0% {
         transform: scale(1) translate(0, 0);
@@ -107,35 +17,262 @@
         opacity: 0;
       }
     }
-    .checkbox{
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      outline: none;
-      width: 1.5rem;
-      height: 1.5rem;
-      display: inline-block;
-      background-color: #000;
-      border: rgb(0, 255, 0) 1px solid;
-      border-radius: 1.5rem;
-      vertical-align: middle;
+
+    
+    @media (min-width: 769px) {
+      .line1{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      .line2{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      body {
+        width: 100%;
+        margin: 0px;
+        padding: 0;
+        background-color: #000;
+        color: rgb(0, 255, 0);
+      }
+
+      ul,
+      h4,
+      h5 {
+        margin: 0;
+      }
+
+      h3 {
+        margin-top: 18px;
+        margin-bottom: 0px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 18px;
+      }
+
+      td,
+      th {
+        border: 1px solid rgb(0, 255, 0);
+        background-color: #000;
+        color: rgb(0, 255, 0);
+        /* padding: 8px; */
+        height: 30px;
+        text-align: center;
+      }
+
+      input[type="number"] {
+        width: 98%;
+        height: 100%;
+        border: 0;
+        text-align: center;
+        background-color: #000;
+        color: rgb(0, 255, 0);
+        border: 0;
+        outline: none;
+      }
+
+      .ul>li {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .readonly {
+        background-color: rgb(0, 255, 0);
+        color: #000;
+        border: #000 1px solid;
+      }
+
+      #emoji-container {
+        position: absolute;
+        pointer-events: none;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .emoji {
+        position: absolute;
+        font-size: 24px;
+        animation: fly 2s forwards;
+      }
+
+      button {
+        background-color: #000;
+        border: 1px solid rgb(0, 255, 0);
+        width: 100px;
+        height: 25px;
+        color: rgb(0, 255, 0);
+        border-radius: 10px;
+      }
+
+      .checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-color: #000;
+        border: rgb(0, 255, 0) 1px solid;
+        border-radius: 5px;
+      }
+
+      .checkbox:checked {
+        background-color: rgb(0, 255, 0);
+      }
     }
-    .checkbox:checked{
-      background-color: rgb(0, 255, 0);
-      vertical-align: middle;
+    @media (max-width: 768px) {
+      html {
+        font-size: calc((100 / 375)*100vw*0.1);
+        /* 以375为设计稿宽度基准 */
+      }
+
+      body {
+        width: 100%;
+        margin: 0px;
+        padding:0;
+        padding-top: 2rem;
+        background-color: #000;
+        color: rgb(0, 255, 0);
+      }
+      h1{
+        margin-top: 1.6rem;
+        font-size: 2.5rem;
+      }
+      ul,
+      h4,
+      h5 {
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 1.6rem;
+        margin-top: 1.8rem;
+        margin-bottom: 0px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1rem;
+        margin-top: 1.8rem;
+      }
+
+      td,
+      th {
+        border: 1px solid rgb(0, 255, 0);
+        background-color: #000;
+        color: rgb(0, 255, 0);
+        /* padding: 8px; */
+        height: 3rem;
+        text-align: center;
+        font-size: 1.9rem;
+      }
+
+      input[type="number"] {
+        width: 6rem;
+        height: 100%;
+        border: 0;
+        text-align: center;
+        background-color: #000;
+        color: rgb(0, 255, 0);
+        border: 0;
+        outline: none;
+        font-size: 1.9rem;
+      }
+      ul>li{
+        font-size: 1.6rem;
+      }
+      .ul>li {
+        font-size: 1.2rem;
+        color: #999;
+      }
+
+      .readonly {
+        background-color: rgb(0, 255, 0);
+        color: #000;
+        border: #000 1px solid;
+      }
+
+      #emoji-container {
+        position: absolute;
+        pointer-events: none;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .emoji {
+        position: absolute;
+        font-size: 0rem;
+        animation: fly 2s forwards;
+      }
+
+      button {
+        background-color: #000;
+        border: 1px solid rgb(0, 255, 0);
+        /* width: 12rem; */
+        /* height: 3rem; */
+        padding: 0.5rem 1rem;
+        color: rgb(0, 255, 0);
+        border-radius: 1rem;
+        font-size: 2rem;
+        vertical-align: middle;
+      }
+
+      .checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        width: 2rem;
+        height: 2rem;
+        display: inline-block;
+        background-color: #000;
+        border: rgb(0, 255, 0) 1px solid;
+        border-radius: 1rem;
+        vertical-align: middle;
+      }
+
+      .checkbox:checked {
+        background-color: rgb(0, 255, 0);
+        vertical-align: middle;
+      }
+      .line1{
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+      .line1 span{
+        font-size: 1.8rem;
+        vertical-align: middle;
+      }
+      .line2{
+        margin-top:2rem ;
+        display: flex;
+        justify-content: space-around;
+      }
     }
   </style>
 </head>
 
-<body  >
+<body>
   <!-- <div id="emoji-container"></div> -->
   <h1 style="text-align: center;margin-top: 0;">Calorie Mahjong Calculator</h1>
-  <div style="display: flex;justify-content: center;gap: 20px;">
-    <label><input type="checkbox" id="useRandom" class="checkbox" onchange="saveToCookies()"> <span class="label">是否开启随机数</span> </label>
-    <label><input type="checkbox" id="useRandom2" class="checkbox" onchange="saveToCookies()"> <span class="label">是否开启随机加数</span> </label>
+  <div class="line1">
+    <label><input type="checkbox" id="useRandom" class="checkbox" onchange="saveToCookies()"><span>是否开启随机数</span> </label>
+    <label><input type="checkbox" id="useRandom2" class="checkbox" onchange="saveToCookies()"><span >是否开启随机加数</span> </label>
+  </div>
+  <div class="line2">
     <button onclick="calculate()">计算</button>
     <button onclick="addRow()">添加数据行</button>
     <button onclick="clearAll()">清空</button>
   </div>
+  
   <table id="dataTable">
     <thead>
       <tr id="headerRow">
@@ -200,12 +337,13 @@
   <div>
     <h3>Thank the author ( Click to enlarge )</h3>
     <p style="text-indent:2em;">
-      <img src="img.png" alt="" width="100px" onclick="this.style.width = this.style.width === '300px' ? '100px' : '300px'">
+      <img src="img.png" alt="" width="100px"
+        onclick="this.style.width = this.style.width === '300px' ? '100px' : '300px'">
     </p>
-    
+
   </div>
   <div>
-    
+
     <h3>Update Log</h3>
     <ul>
       <li>
@@ -471,7 +609,7 @@
     document.body.addEventListener('click', (e) => {
       // 获取点击位置
       const x = e.clientX;
-      const y = e.clientY-25;
+      const y = e.clientY - 25;
 
       // 随机选择一个 emoji
       const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
@@ -480,10 +618,10 @@
       const emoji = document.createElement('div');
       emoji.classList.add('emoji');
       emoji.textContent = randomEmoji;
-      
+
       // 随机生成目标位置（飞出的方向）
-      const randomX = Math.random() * 100-50 ;  // 随机水平偏移
-      const randomY = -Math.random() * 100 ;  // 随机垂直偏移
+      const randomX = Math.random() * 100 - 50;  // 随机水平偏移
+      const randomY = -Math.random() * 100;  // 随机垂直偏移
 
       // 设置动画的目标位置
       emoji.style.setProperty('--x', `${randomX}px`);
