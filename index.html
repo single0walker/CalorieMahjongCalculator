@@ -10,6 +10,8 @@
       /* height: 100vh; */
       margin: 0px;
       padding: 0;
+      background-color: #000;
+      color: rgb(0, 255, 0);
     }
     ul,
     h4,
@@ -31,7 +33,9 @@
 
     td,
     th {
-      border: 1px solid #999;
+      border: 1px solid rgb(0, 255, 0);
+      background-color: #000;
+      color: rgb(0, 255, 0);
       /* padding: 8px; */
       height: 30px;
       text-align: center;
@@ -42,6 +46,10 @@
       height: 100%;
       border: 0;
       text-align: center;
+      background-color: #000;
+      color: rgb(0, 255, 0);
+      border: 0;
+      outline: none;
     }
 
     .ul>li {
@@ -50,7 +58,9 @@
     }
 
     .readonly {
-      background-color: #eee;
+      background-color: rgb(0, 255, 0);
+      color: #000;
+      border: #000 1px solid;
     }
     #emoji-container {
       position: absolute;
@@ -64,7 +74,14 @@
       font-size: 24px;
       animation: fly 2s forwards;
     }
-
+    button{
+      background-color: #000;
+      border: 1px solid rgb(0, 255, 0);
+      width: 100px;
+      height: 25px;
+      color: rgb(0, 255, 0);
+      border-radius: 10px;
+    }
     @keyframes fly {
       0% {
         transform: scale(1) translate(0, 0);
@@ -76,6 +93,20 @@
         opacity: 0;
       }
     }
+    .checkbox{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      outline: none;
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      background-color: #000;
+      border: rgb(0, 255, 0) 1px solid;
+      border-radius: 5px;
+    }
+    .checkbox:checked{
+      background-color: rgb(0, 255, 0);
+    }
   </style>
 </head>
 
@@ -83,8 +114,8 @@
   <!-- <div id="emoji-container"></div> -->
   <h2 style="text-align: center;margin-top: 0;">Calorie Mahjong Calculator</h2>
   <div style="display: flex;justify-content: center;gap: 20px;">
-    <label><input type="checkbox" id="useRandom" onchange="saveToCookies()"> 是否开启随机数</label>
-    <label><input type="checkbox" id="useRandom2" onchange="saveToCookies()"> 是否开启随机加数</label>
+    <label><input type="checkbox" id="useRandom" class="checkbox" onchange="saveToCookies()"> 是否开启随机数</label>
+    <label><input type="checkbox" id="useRandom2" class="checkbox" onchange="saveToCookies()"> 是否开启随机加数</label>
     <button onclick="calculate()">计算</button>
     <button onclick="addRow()">添加数据行</button>
     <button onclick="clearAll()">清空</button>
@@ -151,15 +182,28 @@
     </ul>
   </div>
   <div>
+    <h3>Thank the author ( Click to enlarge )</h3>
+    <p style="text-indent:2em;">
+      <img src="img.png" alt="" width="100px" onclick="this.style.width = this.style.width === '300px' ? '100px' : '300px'">
+    </p>
+    
+  </div>
+  <div>
+    
     <h3>Update Log</h3>
     <ul>
+      <li>
+        <h5>06/15/2025</h5>
+        <ul class="ul">
+          <li>Changed the entire webpage's theme to express my anger</li>
+        </ul>
+      </li>
       <li>
         <h5>06/11/2025</h5>
         <ul class="ul">
           <li>Add Easter Egg</li>
         </ul>
       </li>
-      <li>
       <li>
         <h5>06/10/2025</h5>
         <ul class="ul">
