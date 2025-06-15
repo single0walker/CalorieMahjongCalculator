@@ -304,8 +304,9 @@
         background-color: rgb(0, 255, 0);
         color: #000;
       }
+
       .exportbtn {
-      margin-top: 1rem;
+        margin-top: 1rem;
         width: 100%;
         text-align: center;
         padding: 0.5rem 0;
@@ -475,13 +476,20 @@
       return `${year}_${month}_${day}`;
     }
     function exportToExcel() {
-      // 1. 获取 HTML 表格
-      var table = document.getElementById("dataTable");
+      var originalTable = document.getElementById("dataTable");
+      // 克隆表格
+      var clonedTable = originalTable.cloneNode(true);
 
-      // 2. 解析为 Sheet
-      var wb = XLSX.utils.table_to_book(table, { sheet: "数据表格" });
+      // 替换 clone 中的所有 input 为它们的值
+      var inputs = clonedTable.querySelectorAll("input");
+      inputs.forEach(function (input) {
+        var td = input.parentElement;
+        var value = input.value;
+        td.innerText = value; // 替换 input 为其值
+      });
 
-      // 3. 生成真正的 .xlsx 文件
+      // 使用克隆后的表格导出
+      var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "数据表格" });
       XLSX.writeFile(wb, `卡路里麻将_${getTodayDate()}.xlsx`);
     }
     function myFunction() {
