@@ -37,8 +37,9 @@
         width: 100%;
         margin: 0px;
         padding: 0;
-        background-color: #000;
-        color: rgb(0, 255, 0);
+        background-color: #f5f5f5;
+        color: #333;
+        font-family: Arial, sans-serif;
       }
 
       ul,
@@ -61,48 +62,35 @@
 
       td,
       th {
-        border: 1px solid rgb(0, 255, 0);
-        background-color: #000;
-        color: rgb(0, 255, 0);
-        /* padding: 8px; */
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #333;
         height: 30px;
         text-align: center;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
       }
 
-      input[type="text"] {
-        width: 98%;
-        height: 100%;
-        border: 0;
-        text-align: center;
-        background-color: #000;
-        color: rgb(0, 255, 0);
-        border: 0;
-        outline: none;
-        transition: all 0.5s ease;
-      }
-
+      input[type="text"],
       input[type="number"] {
         width: 98%;
         height: 100%;
-        border: 0;
+        border: 0px solid #ccc;
         text-align: center;
-        background-color: #000;
-        color: rgb(0, 255, 0);
-        border: 0;
+        background-color: #fff;
+        color: #333;
         outline: none;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
       }
 
       .ul>li {
         font-size: 12px;
-        color: #999;
+        color: #666;
       }
 
       .readonly {
-        background-color: rgb(0, 255, 0);
+        background-color: #e0e0e0;
         color: #000;
-        border: #000 1px solid;
+        border: #bbb 1px solid;
       }
 
       #emoji-container {
@@ -119,37 +107,36 @@
       }
 
       button {
-        background-color: #000;
-        border: 1px solid rgb(0, 255, 0);
+        background-color: #007bff;
+        border: none;
         width: 100px;
         height: 25px;
-        color: rgb(0, 255, 0);
-        border-radius: 10px;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
       }
 
       .checkbox {
         -webkit-appearance: none;
         -moz-appearance: none;
         outline: none;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         display: inline-block;
-        background-color: #000;
-        border: rgb(0, 255, 0) 1px solid;
-        border-radius: 5px;
-        transition: all 0.5s ease;
+        background-color: #fff;
+        border: 1px solid #007bff;
+        border-radius: 3px;
+        transition: all 0.3s ease;
       }
 
       .checkbox:checked {
-        background-color: rgb(0, 255, 0);
-        transition: all 0.5s ease;
+        background-color: #007bff;
       }
     }
 
     @media (max-width: 768px) {
       html {
         font-size: calc((100 / 375)*100vw*0.1);
-        /* 以375为设计稿宽度基准 */
       }
 
       body {
@@ -157,8 +144,9 @@
         margin: 0px;
         padding: 0;
         padding-top: 2rem;
-        background-color: #000;
-        color: rgb(0, 255, 0);
+        background-color: #f5f5f5;
+        color: #333;
+        font-family: Arial, sans-serif;
       }
 
       h1 {
@@ -187,10 +175,9 @@
 
       td,
       th {
-        border: 1px solid rgb(0, 255, 0);
-        background-color: #000;
-        color: rgb(0, 255, 0);
-        /* padding: 8px; */
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #333;
         height: 3rem;
         text-align: center;
         font-size: 1.9rem;
@@ -199,11 +186,10 @@
       input[type="text"] {
         width: 6rem;
         height: 100%;
-        border: 0;
+        border: 1px solid #ccc;
         text-align: center;
-        background-color: rgb(0, 255, 0);
-        color: #000;
-        border: 0;
+        background-color: #fff;
+        color: #333;
         outline: none;
         font-size: 1.9rem;
       }
@@ -213,9 +199,8 @@
         height: 100%;
         border: 0;
         text-align: center;
-        background-color: #000;
-        color: rgb(0, 255, 0);
-        border: 0;
+        background-color: #fff;
+        color: #333;
         outline: none;
         font-size: 1.9rem;
       }
@@ -226,13 +211,13 @@
 
       .ul>li {
         font-size: 1.2rem;
-        color: #999;
+        color: #666;
       }
 
       .readonly {
-        background-color: rgb(0, 255, 0);
+        background-color: #e0e0e0;
         color: #000;
-        border: #000 1px solid;
+        border: #bbb 1px solid;
       }
 
       #emoji-container {
@@ -249,15 +234,24 @@
       }
 
       button {
-        background-color: #000;
-        border: 1px solid rgb(0, 255, 0);
-        /* width: 12rem; */
-        /* height: 3rem; */
+        background-color: #007bff;
+        border: none;
         padding: 0.5rem 1rem;
-        color: rgb(0, 255, 0);
-        border-radius: 1rem;
+        color: #fff;
+        border-radius: 0.8rem;
         font-size: 2rem;
         vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .copybtn,
+      .exportbtn {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        background-color: #007bff;
+        color: #fff;
+        margin-top: 1rem;
       }
 
       .checkbox {
@@ -267,17 +261,16 @@
         width: 2rem;
         height: 2rem;
         display: inline-block;
-        background-color: #000;
-        border: rgb(0, 255, 0) 1px solid;
-        border-radius: 1rem;
+        background-color: #fff;
+        border: 1px solid #007bff;
+        border-radius: 0.5rem;
         vertical-align: middle;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
       }
 
       .checkbox:checked {
-        background-color: rgb(0, 255, 0);
+        background-color: #007bff;
         vertical-align: middle;
-        transition: all 0.5s ease;
       }
 
       .line1 {
@@ -296,24 +289,9 @@
         display: flex;
         justify-content: space-around;
       }
-
-      .copybtn {
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 0;
-        background-color: rgb(0, 255, 0);
-        color: #000;
-      }
-
-      .exportbtn {
-        margin-top: 1rem;
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 0;
-        background-color: rgb(0, 255, 0);
-        color: #000;
-      }
     }
+
+
 
     #input {
       position: absolute;
@@ -416,6 +394,13 @@
     <h3>Update Log</h3>
     <ul>
       <li>
+        <h5>06/16/2025</h5>
+        <ul class="ul">
+          <li>Due to complaints, the color scheme has been changed to a normal one</li>
+          <li>YOU DON'T UNDERSTAND ART!!!</li>
+        </ul>
+      </li>
+      <li>
         <h5>06/15/2025</h5>
         <ul class="ul">
           <li>Add export table to Excel</li>
@@ -476,20 +461,13 @@
       return `${year}_${month}_${day}`;
     }
     function exportToExcel() {
-      var originalTable = document.getElementById("dataTable");
-      // 克隆表格
-      var clonedTable = originalTable.cloneNode(true);
+      // 1. 获取 HTML 表格
+      var table = document.getElementById("dataTable");
 
-      // 替换 clone 中的所有 input 为它们的值
-      var inputs = clonedTable.querySelectorAll("input");
-      inputs.forEach(function (input) {
-        var td = input.parentElement;
-        var value = input.value;
-        td.innerText = value; // 替换 input 为其值
-      });
+      // 2. 解析为 Sheet
+      var wb = XLSX.utils.table_to_book(table, { sheet: "数据表格" });
 
-      // 使用克隆后的表格导出
-      var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "数据表格" });
+      // 3. 生成真正的 .xlsx 文件
       XLSX.writeFile(wb, `卡路里麻将_${getTodayDate()}.xlsx`);
     }
     function myFunction() {
