@@ -304,8 +304,23 @@
         background-color: rgb(0, 255, 0);
         color: #000;
       }
+      .exportbtn {
+      margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        background-color: rgb(0, 255, 0);
+        color: #000;
+      }
     }
-    #input {position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;}
+
+    #input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: -10;
+    }
   </style>
 </head>
 
@@ -368,6 +383,7 @@
     </tfoot>
   </table>
   <button class="copybtn" onclick="myFunction()">复制文本</button>
+  <button class="exportbtn" onclick="exportToExcel()">导出为Excel</button>
   <div>
     <h3>Random Number Probability Formula</h3>
     <ul>
@@ -398,6 +414,12 @@
 
     <h3>Update Log</h3>
     <ul>
+      <li>
+        <h5>06/15/2025</h5>
+        <ul class="ul">
+          <li>Add export table to Excel</li>
+        </ul>
+      </li>
       <li>
         <h5>06/15/2025</h5>
         <ul class="ul">
@@ -443,25 +465,43 @@
   </div>
   <!-- <input type="text" id="input" > -->
   <textarea name="" id="input"></textarea>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script>
+    function getTodayDate() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从0开始
+      const day = String(now.getDate()).padStart(2, '0');
+      return `${year}_${month}_${day}`;
+    }
+    function exportToExcel() {
+      // 1. 获取 HTML 表格
+      var table = document.getElementById("dataTable");
+
+      // 2. 解析为 Sheet
+      var wb = XLSX.utils.table_to_book(table, { sheet: "数据表格" });
+
+      // 3. 生成真正的 .xlsx 文件
+      XLSX.writeFile(wb, `卡路里麻将_${getTodayDate()}.xlsx`);
+    }
     function myFunction() {
       /* 获取文本内容 */
       // var text = document.getElementById("name1").innerHTML;
-      let text='';
-      for(let i=1;i<=4;i++){
-        text+=`名称：${document.getElementById("name"+i).innerHTML} `
-        if(randomGenerated2){
-          text+=`随机加数：${document.getElementById("r1_"+i).innerHTML} `
+      let text = '';
+      for (let i = 1; i <= 4; i++) {
+        text += `名称：${document.getElementById("name" + i).innerHTML} `
+        if (randomGenerated2) {
+          text += `随机加数：${document.getElementById("r1_" + i).innerHTML} `
         }
-        if(randomGenerated){
-          text+=`随机乘数：${document.getElementById("r2_"+i).innerHTML} `
+        if (randomGenerated) {
+          text += `随机乘数：${document.getElementById("r2_" + i).innerHTML} `
         }
-        text+=`总计：${document.getElementById("all"+i).innerHTML} \n`
+        text += `总计：${document.getElementById("all" + i).innerHTML} \n`
       }
-        var input = document.getElementById("input");
-        input.value = text;
-        input.select();//选中文本
-        document.execCommand("copy");
+      var input = document.getElementById("input");
+      input.value = text;
+      input.select();//选中文本
+      document.execCommand("copy");
     }
     let randomGenerated = false; //乘数
     let randomGenerated2 = false; //加数
