@@ -9,8 +9,9 @@
 <script>
   (function () {
     const styles = ['CRT_Green.css', 'Dopamine.css', 'Neon.css', 'Normal.css'];
-    const randomStyle = styles[Math.floor(Math.random() * styles.length)];
-    document.getElementById('themeStyle').href = '/css/' + randomStyle;
+const randomStyle = styles[Math.floor(Math.random() * styles.length)];
+const basePath = window.location.pathname.replace(/\/[^\/]*\.html$/, '/'); // 去掉末尾html文件
+document.getElementById('themeStyle').href = basePath + 'css/' + randomStyle;
   })();
 </script>
   <style>
