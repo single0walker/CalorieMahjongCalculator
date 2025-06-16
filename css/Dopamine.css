@@ -1,0 +1,58 @@
+body {
+  background: #fffbe6;
+  color: #ff5c8a;
+}
+
+h3 {
+  color: #ff7f50;
+}
+
+table {
+  background: #fff0f5;
+}
+
+td,
+th {
+  border: #ffb347 solid 1px;
+  background: #ffe4e1;
+  color: #ff69b4;
+}
+
+input[type="text"] {
+  background-color: #ffd700;
+  color: #ff1493;
+}
+
+input[type="number"] {
+  color: #ff4500;
+}
+
+.ul > li {
+  color: #ff6f61;
+}
+
+.readonly {
+  background-color: #98fb98;
+  color: #008080;
+  border: #20b2aa solid 1px;
+}
+
+button {
+  background: #40e0d0;
+  color: #fff;
+  border: #ff69b4 solid 1px;
+}
+
+.checkbox {
+  border: 2px solid #ff69b4;
+}
+
+.checkbox:checked {
+  background-color: #ff69b4;
+}
+
+.copybtn,
+.exportbtn {
+  background-color: #ff7f50;
+  color: #ffffff;
+}

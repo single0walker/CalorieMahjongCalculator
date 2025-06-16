@@ -1,0 +1,74 @@
+body {
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    background: radial-gradient(circle at top left, #08061a, #1e1a3c, #161623);
+    color: #e0e0e0;
+}
+
+ul,
+h4,
+h5 {
+    text-shadow: 0 0 5px #00ffff;
+}
+
+h3 {
+    color: #ff00cc;
+    text-shadow: 0 0 1px #ff00cc, 0 0 5px #ff00cc;
+}
+
+table {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px #00e5ff, 0 0 20px #ff00ff;
+}
+
+td,
+th {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    color: #00f0ff;
+    text-shadow: 0 0 4px #00ffff;
+}
+
+input[type="text"],
+input[type="number"] {
+    color: #fff;
+    text-shadow: 0 0 3px #fff;
+}
+
+.ul>li {
+    color: #a0faff;
+    text-shadow: 0 0 2px #a0faff;
+}
+
+.readonly {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+button {
+    background: linear-gradient(135deg, #ff00cc, #3333ff);
+    box-shadow: 0 0 10px #ff00cc, 0 0 20px #3333ff;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+}
+
+.checkbox {
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 5px #00ffff;
+}
+
+.checkbox:checked {
+    background-color: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.copybtn,
+.exportbtn {
+    background-color: #007bff;
+    color: #fff;
+}

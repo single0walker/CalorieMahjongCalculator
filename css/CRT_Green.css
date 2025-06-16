@@ -1,0 +1,59 @@
+body {
+    /* text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; */
+    background: #000;
+    color: #00ff00;
+}
+
+h3 {
+    color: #00ff00;
+}
+
+table {
+    background: #000;
+    border-radius: 0;
+}
+
+td,
+th {
+    border: #00ff00 solid 1px;
+    background: #000;
+    color: #00ff00;
+}
+
+input[type="text"]{
+    background-color: #00ff00;
+    color: #000;
+}
+input[type="number"] {
+    color: #00ff00;
+}
+
+.ul>li {
+    color: gray;
+}
+
+.readonly {
+    background-color: #00ff00;
+    color: #000;
+    border: #000 solid 1px;
+}
+
+button {
+    background: #000;
+    color: #00ff00;
+    border: #00ff00 solid 1px;
+}
+
+.checkbox {
+    border: 2px solid #00ff00;
+}
+
+.checkbox:checked {
+    background-color: #00ff00;
+}
+
+.copybtn,
+.exportbtn {
+    background-color: #00ff00;
+    color: #000;
+}
