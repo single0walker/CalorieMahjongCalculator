@@ -9,6 +9,7 @@ h3 {
 
 table {
   background: #ffffff;
+
 }
 
 td,
@@ -27,7 +28,7 @@ input[type="number"] {
   color: #000000;
 }
 
-.ul > li {
+.ul>li {
   color: #666666;
 }
 

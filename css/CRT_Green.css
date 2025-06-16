@@ -11,6 +11,7 @@ h3 {
 table {
     background: #000;
     border-radius: 0;
+    border: none;
 }
 
 td,
